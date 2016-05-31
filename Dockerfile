@@ -50,8 +50,3 @@ USER main
 # Install Julia kernel
 RUN julia -e 'Pkg.add("IJulia")'
 RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
-RUN ls /home/main/anaconda2/envs/python3/bin
-
-ADD conda.sh /home/main/
-RUN sh /home/main/conda.sh
-
