@@ -5,7 +5,7 @@ MAINTAINER Massimo Di Stefano <epiesasha@me.com>
 USER root
 
 ADD install_scripts/install_dep.sh /tmp/
-RUN sh /tmp/install_deb.sh
+RUN sh /tmp/install_dep.sh
 
 # Add dependency
 RUN apt-get update
