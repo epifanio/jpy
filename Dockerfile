@@ -4,7 +4,7 @@ MAINTAINER Massimo Di Stefano <epiesasha@me.com>
 
 USER root
 
-ADD install_scripts/install_deb.sh /tmp/install_deb.sh
+ADD install_scripts/install_deb.sh /tmp/
 RUN sh /tmp/install_deb.sh
 
 # Add dependency
