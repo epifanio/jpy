@@ -12,4 +12,5 @@ conda install -y -n $MY_CONDA_PY3ENV \
                                'bokeh' \
                                'gdal' \
                                'pyproj' \
+                               'bokeh' \
                                && conda clean -yt

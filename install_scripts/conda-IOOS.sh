@@ -18,16 +18,11 @@ conda install -y --channel IOOS -n $MY_CONDA_PY3ENV \
                                'mpld3' \
                                'mplleaflet' \
                                'oct2py' \
-                               'proj4' \
-                               'bokeh' \
-                               'gdal' \
-                               'pyproj' \
                                'qrcode' \
                                'fiona' \
                                'rasterio' \
                                'xray' \
                                'pygeoif' \
-                               'pyproj' \
                                'pyepsg' \
                                'netcdf4' \
                                'iris' \
