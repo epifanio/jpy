@@ -28,8 +28,8 @@ ADD install_scripts/conda.sh /tmp/
 RUN sh /tmp/conda.sh
 #
 ## install IOOS packages
-#ADD install_scripts/conda-IOOS.sh /tmp/
-#RUN sh /tmp/conda-IOOS.sh
+ADD install_scripts/conda-IOOS.sh /tmp/
+RUN sh /tmp/conda-IOOS.sh
 #
 ## install pip and other packages from source
 #ADD install_scripts/install_pip.sh /tmp/
