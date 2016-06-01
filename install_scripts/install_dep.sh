@@ -33,6 +33,8 @@ apt-get update -qq && \
         graphviz \
         grass-core \
         ossim-core \
+        rubygems-integration \
+        ruby-dev \
         swig && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*  && \
@@ -43,6 +45,3 @@ apt-get update -qq && \
         mpi4py \
         matplotlib \
         runipy
-
-##        rubygems-integration \
-##        ruby-dev \

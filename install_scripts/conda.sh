@@ -8,10 +8,7 @@ conda install -y -n $MY_CONDA_PY3ENV \
                                'pandas' \
                                'vispy' \
                                'mpld3' \
-                               'proj4' \
                                'bokeh' \
-                               'gdal' \
-                               'pyproj' \
                                'bokeh' \
                                'graphviz' \
                                'seaborn' \
