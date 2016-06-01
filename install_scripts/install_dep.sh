@@ -45,5 +45,3 @@ apt-get update -qq && \
         mpi4py \
         matplotlib \
         runipy
-
-        RUN apt-get install -y
