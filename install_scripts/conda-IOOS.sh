@@ -29,7 +29,7 @@ conda install -y --channel IOOS -n $MY_CONDA_PY3ENV \
                                'iris' \
                                'geojson' \
                                'owslib' \
+                               'geopandas' \
+                               'fiona' \
+                               'rasterio' \
                                && conda clean -yt
-                               #'geopandas' \
-                               #'fiona' \
-                               #'rasterio' \
