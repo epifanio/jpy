@@ -31,14 +31,16 @@ RUN sh /tmp/conda.sh
 ADD install_scripts/conda-IOOS.sh /tmp/
 RUN sh /tmp/conda-IOOS.sh
 
-# Install ipyleaflet
-RUN /home/main/anaconda2/envs/python3/bin/conda install -c conda-forge ipyleaflet
-RUN /home/main/anaconda2/envs/python3/bin/conda install -c conda-forge -n python3 ipyleaflet
+# install pip and other packages from source
+ADD install_scripts/install_pip.sh /tmp/
+RUN sh /tmp/install_pip.sh
+
 
 # Install R kernel and basic packages
 ADD install_scripts/conda-R.sh /tmp/
 RUN sh /tmp/conda-R.sh
 RUN /home/main/anaconda2/envs/python3/bin/conda install -c r r-rbokeh
+
 
 # Install Julia kernel
 RUN julia -e 'Pkg.add("IJulia")'
