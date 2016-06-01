@@ -13,4 +13,6 @@ conda install -y -n $MY_CONDA_PY3ENV \
                                'gdal' \
                                'pyproj' \
                                'bokeh' \
+                               'graphviz' \
+                               'seaborn' \
                                && conda clean -yt

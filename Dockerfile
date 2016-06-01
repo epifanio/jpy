@@ -5,6 +5,9 @@ MAINTAINER Massimo Di Stefano <epiesasha@me.com>
 USER root
 
 # Add dependency
+RUN echo "root:root" | chpasswd
+RUN echo "main:main" | chpasswd
+
 RUN apt-get update && apt-get upgrade -y
 
 ADD install_scripts/install_dep.sh /tmp/
