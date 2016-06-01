@@ -19,8 +19,6 @@ conda install -y --channel IOOS -n $MY_CONDA_PY3ENV \
                                'mplleaflet' \
                                'oct2py' \
                                'qrcode' \
-                               'fiona' \
-                               'rasterio' \
                                'xray' \
                                'pygeoif' \
                                'pyepsg' \
@@ -28,5 +26,7 @@ conda install -y --channel IOOS -n $MY_CONDA_PY3ENV \
                                'iris' \
                                'geojson' \
                                'owslib' \
-                               'geopandas' \
                                && conda clean -yt
+                               #'geopandas' \
+                               #'fiona' \
+                               #'rasterio' \
