@@ -6,12 +6,18 @@ conda config --set ssl_verify false
 
 conda install -y -n $MY_CONDA_PY3ENV \
                                'pandas' \
+                               'proj4' \
                                'vispy' \
                                'mpld3' \
                                'bokeh' \
                                'bokeh' \
                                'graphviz' \
                                'seaborn' \
+                               'gdal' \
+                               'fiona' \
+                               'rasterio' \
+                               'pyproj' \
+                               'shapely' \
                                && conda clean -yt
 
 # Install ipyleaflet
