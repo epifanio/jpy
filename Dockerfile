@@ -20,6 +20,17 @@ RUN apt-get update
 RUN apt-get install -y julia libnettle4 && apt-get clean
 #
 USER main
+
+ENV HOME /home/main
+ENV SHELL /bin/bash
+
+ENV USER main
+WORKDIR $HOME
+
+# add osgeolive data
+ADD install_script/getdata.sh /tmp/getdata.sh
+RUN bash /tmp/getdata.sh
+
 #
 # install main python packages
 ADD install_scripts/conda.sh /tmp/
@@ -47,3 +58,22 @@ RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 USER root
 RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
 RUN dpkg -i grass-gis_7.3-svn_amd64.deb
+
+RUN useradd -m -s /bin/bash postgres
+RUN echo "postgres:postgres" | chpasswd
+
+USER postgres
+
+# start db and make new user and db (osgeo) listening from all host
+RUN /etc/init.d/postgresql start &&\
+    psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
+    createdb -O main main
+
+
+ADD install_script/pgsetup.sh /tmp/pgsetup.sh
+RUN /tmp/pgsetup.sh
+
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
+
+

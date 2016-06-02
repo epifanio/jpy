@@ -37,6 +37,9 @@ apt-get update -qq && \
         ruby-dev \
         rubygems \
         netcdf-bin \
+        mlocate \
+        postgis* \
+        sudo \
         swig && \
     apt-get clean && \
     gem install gist && \
