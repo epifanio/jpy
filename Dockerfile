@@ -28,7 +28,7 @@ ENV USER main
 WORKDIR $HOME
 
 # add osgeolive data
-ADD install_script/getdata.sh /tmp/getdata.sh
+ADD install_scripts/getdata.sh /tmp/getdata.sh
 RUN bash /tmp/getdata.sh
 
 #
@@ -56,6 +56,7 @@ RUN julia -e 'Pkg.add("IJulia")'
 RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 
 USER root
+
 RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
 RUN dpkg -i grass-gis_7.3-svn_amd64.deb
 
