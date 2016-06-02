@@ -44,3 +44,6 @@ RUN /home/main/anaconda2/envs/python3/bin/conda install -c r r-rbokeh
 RUN julia -e 'Pkg.add("IJulia")'
 RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 
+USER root
+RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
+RUN dpkg -i grass-gis_7.3-svn_amd64.deb

@@ -35,8 +35,11 @@ apt-get update -qq && \
         ossim-core \
         rubygems-integration \
         ruby-dev \
+        rubygems \
+        netcdf-bin \
         swig && \
     apt-get clean && \
+    gem install gist && \
     rm -rf /var/lib/apt/lists/*  && \
     pip install \
         numpy \

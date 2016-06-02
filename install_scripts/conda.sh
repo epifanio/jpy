@@ -18,6 +18,9 @@ conda install -y -n $MY_CONDA_PY3ENV \
                                'rasterio' \
                                'pyproj' \
                                'shapely' \
+                               'sphinx' \
+                               'docutils' \
+                               'psycopg2' \
                                && conda clean -yt
 
 # Install ipyleaflet
