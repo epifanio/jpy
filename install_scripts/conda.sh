@@ -21,6 +21,7 @@ conda install -y -n $MY_CONDA_PY3ENV \
                                'sphinx' \
                                'docutils' \
                                'psycopg2' \
+                               'sqlalchemy' \
                                && conda clean -yt
 
 # Install ipyleaflet
