@@ -59,6 +59,19 @@ USER root
 RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
 RUN dpkg -i grass-gis_7.3-svn_amd64.deb
 
+ENV PATH /usr/local/grass-7.3.svn/bin:$PATH
+ENV GRASS_PNG_AUTO_WRITE=TRUE
+ENV GRASS_PNG_COMPRESSION=9
+ENV GRASS_TRANSPARENT=TRUE
+ENV GRASS_TRUECOLOR=TRUE
+ENV GISBASE=/usr/local/grass-7.3.svn
+ENV GISDBASE=/home/main/notebooks/data/grass7data
+ENV GISRC=/home/main/.grass7/rc
+
+RUN mkdir /home/main/.grass7
+
+ADD install_scripts/rc /home/main/.grass7/rc
+
 RUN useradd -m -s /bin/bash postgres
 RUN echo "postgres:postgres" | chpasswd
 

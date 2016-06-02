@@ -1,0 +1,7 @@
+GISDBASE: /home/main/notebooks/data/grass7data
+LOCATION_NAME: north_carolina
+GRASS_VERBOSE: '-1'
+GUI: text
+DEBUG: 0
+MAPSET: PERMANENT
+GISBASE: /usr/local/grass-7.3.svn
