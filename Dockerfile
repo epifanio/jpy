@@ -24,19 +24,22 @@ RUN printf "#\041/bin/sh \n rm -f /tmp/.X99-lock && xvfb-run -s '-screen 0 1600x
 RUN apt-get update
 RUN apt-get install -y julia libnettle4 && apt-get clean
 #
+# Add data directory
+#
+RUN wget http://epinux.com/jpy-data_0.1_amd64.deb
+RUN dpkg -i jpy-data_0.1_amd64.deb
+RUN rm -rf jpy-data_0.1_amd64.deb
+
+
 USER main
 
 ENV HOME /home/main
 ENV SHELL /bin/bash
 
 ENV USER main
+
 WORKDIR $HOME
 
-# add osgeolive data
-#ADD install_scripts/getdata.sh /tmp/getdata.sh
-#RUN bash /tmp/getdata.sh
-#
-##
 ## install main python packages
 ADD install_scripts/conda.sh /tmp/
 RUN sh /tmp/conda.sh
@@ -64,6 +67,7 @@ USER root
 
 RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
 RUN dpkg -i grass-gis_7.3-svn_amd64.deb
+RUN rm -rf grass-gis_7.3-svn_amd64.deb
 
 ENV PATH /usr/local/grass-7.3.svn/bin:$PATH
 ENV GRASS_PNG_AUTO_WRITE TRUE
@@ -75,9 +79,7 @@ ENV GISDBASE /home/main/notebooks/data/grass7data
 ENV GISRC /home/main/.grass7/rc
 
 RUN mkdir /home/main/.grass7
-
 ADD install_scripts/rc /home/main/.grass7/rc
-
 
 #USER postgres
 #
@@ -94,3 +96,4 @@ ADD install_scripts/rc /home/main/.grass7/rc
 #RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 #
 
+fpm -s dir -t deb -n jpy-data -v 0.1 -C /tmp/installdir -p jpy-data_VERSION_ARCH.deb home/
