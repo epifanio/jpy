@@ -45,22 +45,16 @@ done
 
 rm -rf /home/main/*gz
 
-mkdir -p /home/main/.grass7/
-touch /home/main/.grass7/rc
 
-echo "GISDBASE: /home/main/notebooks/data/grass7data" >> /home/main/.grass7/rc
-echo "LOCATION_NAME: nc_basic_spm_grass7" >> /home/main/.grass7/rc
-echo "MAPSET: PERMANENT" >> /home/main/.grass7/rc
-echo "LOCATION: /home/main/notebooks/data/grass7data/nc_basic_spm_grass7" >> /home/main/.grass7/rc
-
-
-##################################
+#
+#
+###################################
 # Download netCDF datasets:
 #
-
-mkdir -p  /home/main/notebooks/data/netcdf
-mkdir netcdf; cd netcdf
-
+#
+mkdir -p /home/main/notebooks/data/netcdf
+cd /home/main/notebooks/data/netcdf
+#
 t_netcdf_files="
 README_netCDF_samples.txt
 rx5dayETCCDI_yr_MIROC5_historical_r2i1p1_1850-2012.nc
@@ -73,9 +67,8 @@ txxETCCDI_yr_MIROC5_rcp45_r2i1p1_2006-2100.nc
 txxETCCDI_yr_MIROC5_rcp45_r2i1p1_2006-2100.nc.txt
 "
 for n in $t_netcdf_files; do
-    wget -c -N --progress=dot:mega http://download.osgeo.org/livedvd/data/netcdf/$n
+	wget -c -N --progress=dot:mega http://download.osgeo.org/livedvd/data/netcdf/$n
 done
 
 mv * /home/main/notebooks/data/netcdf/
 cd ..
-rm -rf netcdf

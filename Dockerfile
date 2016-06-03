@@ -31,6 +31,7 @@ RUN apt-get install -y julia libnettle4 && apt-get clean
 RUN wget http://epinux.com/jpy-data_0.1_amd64.deb
 RUN dpkg -i jpy-data_0.1_amd64.deb
 RUN rm -rf jpy-data_0.1_amd64.deb
+RUN chmod -R 777 /home/main/notebooks/data
 
 
 USER main
@@ -71,6 +72,7 @@ RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
 RUN dpkg -i grass-gis_7.3-svn_amd64.deb
 RUN rm -rf grass-gis_7.3-svn_amd64.deb
 
+USER main
 ENV PATH /usr/local/grass-7.3.svn/bin:$PATH
 ENV GRASS_PNG_AUTO_WRITE TRUE
 ENV GRASS_PNG_COMPRESSION 9
@@ -83,16 +85,17 @@ ENV GISRC /home/main/.grass7/rc
 RUN mkdir /home/main/.grass7
 ADD install_scripts/rc /home/main/.grass7/rc
 
-#USER postgres
+USER postgres
 #
 ## start db and make new user and db (osgeo) listening from all host
-#RUN /etc/init.d/postgresql start &&\
-#    psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
-#    createdb -O main main
+RUN /etc/init.d/postgresql start &&\
+    psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
+    createdb -O main main
 #
 #
-#ADD install_script/pgsetup.sh /tmp/pgsetup.sh
-#RUN /tmp/pgsetup.sh
+ADD install_script/pgsetup.sh /tmp/pgsetup.sh
+RUN /tmp/pgsetup.sh
 #
-#RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
-#RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
+USER root
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf

@@ -27,3 +27,4 @@ conda install -y -n $MY_CONDA_PY3ENV \
 # Install ipyleaflet
 conda install -c conda-forge ipyleaflet
 conda install -c conda-forge -n $MY_CONDA_PY3ENV ipyleaflet
+

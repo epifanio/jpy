@@ -38,9 +38,15 @@ apt-get update -qq && \
         rubygems \
         netcdf-bin \
         mlocate \
+        postgresql-9.4 \
+        postgresql-client-9.4 \
+        postgresql-contrib-9.4 \
         postgis \
+        postgresql-9.4-postgis-2.1 \
         postgresql-9.4-postgis-scripts \
+        postgresql-contrib \
         sudo \
+        nano \
         swig && \
     apt-get clean && \
     gem install gist && \
