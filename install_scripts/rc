@@ -1,5 +1,5 @@
 GISDBASE: /home/main/notebooks/data/grass7data
-LOCATION_NAME: north_carolina
+LOCATION_NAME: nc_basic_spm_grass7
 GRASS_VERBOSE: '-1'
 GUI: text
 DEBUG: 0
