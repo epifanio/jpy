@@ -10,10 +10,11 @@ RUN echo "main:main" | chpasswd
 
 RUN useradd -m -s /bin/bash postgres
 RUN echo "postgres:postgres" | chpasswd
-RUN echo "main     ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
 
 ADD install_scripts/install_dep.sh /tmp/
 RUN sh /tmp/install_dep.sh
+RUN echo "main     ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 # script for xvfb-run.  all docker commands will effectively run under this via the entrypoint
 RUN printf "#\041/bin/sh \n rm -f /tmp/.X99-lock && xvfb-run -s '-screen 0 1600x1200x16' \$@" >> /usr/local/bin/xvfbrun.sh && \

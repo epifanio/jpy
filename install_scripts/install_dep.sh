@@ -38,7 +38,7 @@ apt-get update -qq && \
         rubygems \
         netcdf-bin \
         mlocate \
-        postgis* \
+        postgis \
         sudo \
         swig && \
     apt-get clean && \
