@@ -85,17 +85,18 @@ ENV GISRC /home/main/.grass7/rc
 RUN mkdir /home/main/.grass7
 ADD install_scripts/rc /home/main/.grass7/rc
 
-USER postgres
+#USER postgres
 #
 ## start db and make new user and db (osgeo) listening from all host
-RUN /etc/init.d/postgresql start &&\
+#RUN /etc/init.d/postgresql start &&\
     psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
     createdb -O main main
 #
 #
-ADD install_script/pgsetup.sh /tmp/pgsetup.sh
-RUN /tmp/pgsetup.sh
+#ADD install_script/pgsetup.sh /tmp/pgsetup.sh
+#RUN /tmp/pgsetup.sh
 #
+
 USER root
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
