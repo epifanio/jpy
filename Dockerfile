@@ -33,8 +33,8 @@ ENV USER main
 WORKDIR $HOME
 
 # add osgeolive data
-#ADD install_scripts/getdata.sh /tmp/getdata.sh
-#RUN bash /tmp/getdata.sh
+ADD install_scripts/getdata.sh /tmp/getdata.sh
+RUN bash /tmp/getdata.sh
 #
 ##
 ## install main python packages

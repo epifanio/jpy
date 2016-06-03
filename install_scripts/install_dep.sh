@@ -39,6 +39,7 @@ apt-get update -qq && \
         netcdf-bin \
         mlocate \
         postgis \
+        postgresql-9.4-postgis-scripts \
         sudo \
         swig && \
     apt-get clean && \
