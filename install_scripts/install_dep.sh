@@ -47,6 +47,9 @@ apt-get update -qq && \
         postgresql-contrib \
         sudo \
         nano \
+        cgi-mapserver \
+        mapserver-bin \
+        python-mapscript \
         swig && \
     apt-get clean && \
     gem install gist && \
