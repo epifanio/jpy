@@ -19,12 +19,12 @@ mv nc_basic_spm_grass7 $DATA_FOLDER/grass7data
 
 
 
-wget -c --progress=dot:mega http://download.osgeo.org/livedvd/data/natural_earth2/all_10m_20.tgz
-tar xzf all_10m_20.tgz
-for tDir in ne_10m_*; do
-   mv $tDir/* $NE2_DATA_FOLDER
-   rm -rf $tDir
-done
+#wget -c --progress=dot:mega http://download.osgeo.org/livedvd/data/natural_earth2/all_10m_20.tgz
+#tar xzf all_10m_20.tgz
+#for tDir in ne_10m_*; do
+#   mv $tDir/* $NE2_DATA_FOLDER
+#   rm -rf $tDir
+#done
 
 
 #RFILE=HYP_50M_SR_W_reduced.zip
