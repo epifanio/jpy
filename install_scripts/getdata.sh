@@ -43,15 +43,15 @@ done
 #    ogrinfo -sql "CREATE SPATIAL INDEX ON $S" $SHP;
 #done
 #
-rm -rf /home/main/*gz
+#rm -rf /home/main/*gz
 #
-mkdir -p /home/main/.grass7/
-touch /home/main/.grass7/rc
+#mkdir -p /home/main/.grass7/
+#touch /home/main/.grass7/rc
 #
-echo "GISDBASE: /home/main/notebooks/data/grass7data" >> /home/main/.grass7/rc
-echo "LOCATION_NAME: nc_basic_spm_grass7" >> /home/main/.grass7/rc
-echo "MAPSET: PERMANENT" >> /home/main/.grass7/rc
-echo "LOCATION: /home/main/notebooks/data/grass7data/nc_basic_spm_grass7" >> /home/main/.grass7/rc
+#echo "GISDBASE: /home/main/notebooks/data/grass7data" >> /home/main/.grass7/rc
+#echo "LOCATION_NAME: nc_basic_spm_grass7" >> /home/main/.grass7/rc
+#echo "MAPSET: PERMANENT" >> /home/main/.grass7/rc
+#echo "LOCATION: /home/main/notebooks/data/grass7data/nc_basic_spm_grass7" >> /home/main/.grass7/rc
 #
 #
 ###################################
