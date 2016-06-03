@@ -33,52 +33,52 @@ ENV USER main
 WORKDIR $HOME
 
 # add osgeolive data
-ADD install_scripts/getdata.sh /tmp/getdata.sh
-RUN bash /tmp/getdata.sh
+#ADD install_scripts/getdata.sh /tmp/getdata.sh
+#RUN bash /tmp/getdata.sh
 #
 ##
 ## install main python packages
-#ADD install_scripts/conda.sh /tmp/
-#RUN sh /tmp/conda.sh
-##
-### install IOOS packages
-##ADD install_scripts/conda-IOOS.sh /tmp/
-##RUN sh /tmp/conda-IOOS.sh
-##
-## install pip and other packages from source
-#ADD install_scripts/install_pip.sh /tmp/
-#RUN sh /tmp/install_pip.sh
-##
-##
-### Install R kernel and basic packages
-#ADD install_scripts/conda-R.sh /tmp/
-#RUN sh /tmp/conda-R.sh
-#RUN /home/main/anaconda2/envs/python3/bin/conda install -c r r-rbokeh
-#
-#
-## Install Julia kernel
-#RUN julia -e 'Pkg.add("IJulia")'
-#RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
-#
-#USER root
-#
-#RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
-#RUN dpkg -i grass-gis_7.3-svn_amd64.deb
-#
-#ENV PATH /usr/local/grass-7.3.svn/bin:$PATH
-#ENV GRASS_PNG_AUTO_WRITE TRUE
-#ENV GRASS_PNG_COMPRESSION 9
-#ENV GRASS_TRANSPARENT TRUE
-#ENV GRASS_TRUECOLOR TRUE
-#ENV GISBASE /usr/local/grass-7.3.svn
-#ENV GISDBASE /home/main/notebooks/data/grass7data
-#ENV GISRC /home/main/.grass7/rc
-#
-#RUN mkdir /home/main/.grass7
-#
-#ADD install_scripts/rc /home/main/.grass7/rc
-#
-#
+ADD install_scripts/conda.sh /tmp/
+RUN sh /tmp/conda.sh
+
+# install IOOS packages
+ADD install_scripts/conda-IOOS.sh /tmp/
+RUN sh /tmp/conda-IOOS.sh
+
+# install pip and other packages from source
+ADD install_scripts/install_pip.sh /tmp/
+RUN sh /tmp/install_pip.sh
+
+
+# Install R kernel and basic packages
+ADD install_scripts/conda-R.sh /tmp/
+RUN sh /tmp/conda-R.sh
+RUN /home/main/anaconda2/envs/python3/bin/conda install -c r r-rbokeh
+
+
+# Install Julia kernel
+RUN julia -e 'Pkg.add("IJulia")'
+RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
+
+USER root
+
+RUN wget http://epinux.com/grass-gis_7.3-svn_amd64.deb
+RUN dpkg -i grass-gis_7.3-svn_amd64.deb
+
+ENV PATH /usr/local/grass-7.3.svn/bin:$PATH
+ENV GRASS_PNG_AUTO_WRITE TRUE
+ENV GRASS_PNG_COMPRESSION 9
+ENV GRASS_TRANSPARENT TRUE
+ENV GRASS_TRUECOLOR TRUE
+ENV GISBASE /usr/local/grass-7.3.svn
+ENV GISDBASE /home/main/notebooks/data/grass7data
+ENV GISRC /home/main/.grass7/rc
+
+RUN mkdir /home/main/.grass7
+
+ADD install_scripts/rc /home/main/.grass7/rc
+
+
 #USER postgres
 #
 ## start db and make new user and db (osgeo) listening from all host
