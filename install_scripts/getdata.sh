@@ -11,7 +11,7 @@ mkdir -p $GRASS_DATA_FOLDER
 mkdir -p $NE2_DATA_FOLDER
 
 
-
+mkdir -p $DATA_FOLDER/grass7data
 wget "http://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz"
 tar -zxvf nc_basic_spm_grass7.tar.gz
 rm -rf nc_basic_spm_grass7.tar.gz
