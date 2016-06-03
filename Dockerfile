@@ -25,7 +25,9 @@ RUN apt-get update
 RUN apt-get install -y julia libnettle4 && apt-get clean
 #
 # Add data directory
-#
+# data generated using getdata.sh and then packaged by fpm:
+# # fpm -s dir -t deb -n jpy-data -v 0.1 -C /tmp/installdir -p jpy-data_VERSION_ARCH.deb home/
+
 RUN wget http://epinux.com/jpy-data_0.1_amd64.deb
 RUN dpkg -i jpy-data_0.1_amd64.deb
 RUN rm -rf jpy-data_0.1_amd64.deb
@@ -94,6 +96,3 @@ ADD install_scripts/rc /home/main/.grass7/rc
 #
 #RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
 #RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
-#
-
-fpm -s dir -t deb -n jpy-data -v 0.1 -C /tmp/installdir -p jpy-data_VERSION_ARCH.deb home/
