@@ -85,18 +85,14 @@ ENV GISRC /home/main/.grass7/rc
 RUN mkdir /home/main/.grass7
 ADD install_scripts/rc /home/main/.grass7/rc
 
-USER postgres
+#USER postgres
 #
 ## start db and make new user and db (osgeo) listening from all host
-RUN /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
-    createdb -O main main &&\
-    psql natural_earth2 -c 'create extension postgis;' &&\
-    psql natural_earth2 -f /usr/share/postgresql/9.4/contrib/postgis-2.1/legacy.sql &&\
-    psql main -c 'create extension postgis;' &&\
-    psql main -f /usr/share/postgresql/9.4/contrib/postgis-2.1/legacy.sql
-
-
+#RUN /etc/init.d/postgresql start &&\
+#    psql --command "CREATE USER main WITH SUPERUSER PASSWORD 'main';" &&\
+#    createdb -O main main
+#
+#
 #ADD install_script/pgsetup.sh /tmp/pgsetup.sh
 #RUN /tmp/pgsetup.sh
 #
